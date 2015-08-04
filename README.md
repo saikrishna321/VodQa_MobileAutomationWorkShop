@@ -10,6 +10,7 @@
  
 ![Android](http://i62.tinypic.com/20tgscj.png)
     * Save the file and Execute "set" in your terminal and restart your terminal for the changes to reflect.
+    
     * Now type adb version 
 
 
