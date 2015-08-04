@@ -6,4 +6,6 @@
  2. Set ANDROID_HOME and JAVA_HOME
     * Open Terminal and Navigate to Home Directory.
     * Execute command touch .bash_profile
-    * Execute command open -e .bash_profile and set the path a shown in image below
+    * Execute command open -e .bash_profile and set the path a shown in image below( Change the 
+ 
+![Android](http://i62.tinypic.com/20tgscj.png)
