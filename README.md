@@ -23,6 +23,10 @@
    1. brew install node      # get node.js
    2. npm install -g appium  # get appium
    3. npm install wd         # get appium client
-   4. appium &               # start appium
+   4. appium &               # start appium server
+ 
 
+<h1>Appium Windows Setup For Android </h1>
 
+   1. https://supriyavivek.wordpress.com/2015/03/03/appium-setup-for-windows/
+  
