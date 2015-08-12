@@ -21,9 +21,9 @@ public class AndroidWebTest {
 	@Before
 	public void setUp() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("deviceName", "9111833b");
+		capabilities.setCapability("deviceName", "10.4.21.140:5555");
 		capabilities.setCapability("platformVersion", "5.0.1");
-		capabilities.setCapability("browserName", "Browser");
+		capabilities.setCapability("browserName", "Chrome");
 		driver=new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 	
