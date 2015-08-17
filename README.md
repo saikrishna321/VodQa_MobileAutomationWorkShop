@@ -28,5 +28,21 @@
 
 <h1>Appium Windows Setup For Android </h1>
 
-   1. https://supriyavivek.wordpress.com/2015/03/03/appium-setup-for-windows/
+   Referrence Link :
+       https://supriyavivek.wordpress.com/2015/03/03/appium-setup-for-windows/
+       
+<h1> Wearble Automation with Appium </h1>
+
+ 1. Download the Android Wear App from Google PlayStore and install it on the Android Phone.
+ 2. Sync the Android Wearbable device/emulator with Android Phone.
+ 3. Check if android phone and android wearable are detected
+    * Navigate to terminal and type "adb devices" -- Should display both phone and wearbale
+ 4. Port forward 5601 from mac to android device to allow wearable device to connect with the andriod device.
+    * abd -s <device-serial-no> forward tcp:5601 tcp:5601
+ 5. Run appium server one for android device(port 4724) and one for the wearable device(port 4723)
+    * appium -p 4723 --udid <wearbale-serial-number> &
+    * appium -p 4724 --udid <android-phone-serial-number> &
+ 6. Run the Sameple Test(AppiumWearableTest)
+ 
+[![ScreenShot](https://i.ytimg.com/vi/ULXhQTyLVIA/0.jpg?time=1439788986539)](https://www.youtube.com/watch?v=ULXhQTyLVIA)
   
