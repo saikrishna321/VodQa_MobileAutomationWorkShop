@@ -4,5 +4,4 @@ After the appium GUI and Android emulator are successfully launched, we can clic
 
 ![Alt text](https://raw.githubusercontent.com/hy1984427/appium/master/images/android_inspector_locate_element.png "inspector to locate element in Android app")
 
-As you can see, in the inspector, we can't see the elements' structure and nor the preview of app. So it's better for us not using appium inspector for Android app, but only for iOS app.
 
