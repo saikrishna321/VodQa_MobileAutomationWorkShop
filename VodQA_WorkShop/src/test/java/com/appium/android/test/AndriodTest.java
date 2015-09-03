@@ -25,7 +25,7 @@ public class AndriodTest {
 	private static final String Image_Scrollable = "org.wordpress.android:id/image_featured";
 	public static final String PASSWORD = "org.wordpress.android:id/nux_password";
 	public static final String USERNAME = "org.wordpress.android:id/nux_username";
-	AppiumDriver<WebElement> driver;
+	AppiumDriver<MobileElement> driver;
 
 	@Before
 	public void setUp() throws MalformedURLException {
@@ -35,7 +35,7 @@ public class AndriodTest {
 		caps.setCapability("app", System.getProperty("user.dir") + "/build/wordpress.apk");
 		caps.setCapability("package", "org.wordpress.android");
 		caps.setCapability("appActivity", "org.wordpress.android.ui.WPLaunchActivity");
-		driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+		driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
 	}
 
 	@After
@@ -63,6 +63,8 @@ public class AndriodTest {
 		//Scroll UP
 		waitForElementClickable(By.id(Image_Scrollable), 10);
 		scrollDirection(Image_Scrollable,SwipeElementDirection.UP);
+		 
+		
 		
 		driver(By.id("org.wordpress.android:id/image_featured")).click();
 		Thread.sleep(5000);

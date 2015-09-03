@@ -2,12 +2,18 @@ package com.appium.android.test;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,17 +24,19 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class AndroidWebTest {
 	AppiumDriver<WebElement> driver;
+
 	@Before
 	public void setUp() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("deviceName", "10.4.21.140:5555");
 		capabilities.setCapability("platformVersion", "5.0.1");
-		capabilities.setCapability("browserName", "Chrome");
-		driver=new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		capabilities.setCapability("browserName", "chrome");
+		capabilities.setCapability("setJavaScriptEnabled", true);
+		driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
-	
+
 	@After
-	public void tearDown(){
+	public void tearDown() {
 		driver.quit();
 	}
 
@@ -37,10 +45,12 @@ public class AndroidWebTest {
 		driver.get("http://www.thoughtworks.com");
 		WebElement idElement = driver.findElement(By.id("mobile-menu-title"));
 		assertNotNull(idElement);
+		elementHighlight(idElement);
 		idElement.click();
 		WebDriverWait wait_1 = new WebDriverWait(driver, 30);
 		wait_1.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='mobile-menu']/li[6]/a")));
 		WebElement commentElement = driver.findElement(By.xpath(".//*[@id='mobile-menu']/li[6]/a"));
+		elementHighlight(commentElement);
 		assertNotNull(commentElement);
 		commentElement.click();
 		Thread.sleep(5000);
@@ -49,5 +59,18 @@ public class AndroidWebTest {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='contact-us-vertical']")));
 		Thread.sleep(2000);
+	}
+
+	public void elementHighlight(WebElement element) throws InterruptedException, IOException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		String oldStyle = element.getAttribute("style");
+		String args = "arguments[0].setAttribute('style', arguments[1]);";
+		js.executeScript(args, element, "color: yellow; border: 3px solid yellow;");
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		// Now you can do whatever you need to do with it, for example copy
+		// somewhere
+		FileUtils.copyFile(scrFile, new File("screenshot.png"));
+		Thread.sleep(1000);
+		js.executeScript(args, element, oldStyle);
 	}
 }
