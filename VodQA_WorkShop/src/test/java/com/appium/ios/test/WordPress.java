@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 
@@ -39,11 +40,11 @@ public class WordPress {
 	    
 	    @Test
 	    public void testApp() throws InterruptedException{
-	     driver.findElement(By.className("UIATextField")).sendKeys("calabash");
+	    	driver.findElement(MobileBy.IosUIAutomation(".elements().firstWithPredicate(\"value beginsWith 'Username'\")")).sendKeys("calabash");
 	     driver.findElement(By.className("UIASecureTextField")).sendKeys("password");
 	     driver.hideKeyboard();
 	     driver.findElement(By.xpath(".//*[@name='Add Self-Hosted Site']")).click();
 	     driver.findElement(By.xpath(".//*[@value='Site Address (URL)']")).sendKeys("ec2-54-82-18-238.compute-1.amazonaws.com/wordpress");
-	     driver.findElement(By.xpath(".//*[@name='Add Site']")).click();
+	     driver.findElement(By.xpath(".//*[@name='Add Site']")).click();     
 	    }
 }

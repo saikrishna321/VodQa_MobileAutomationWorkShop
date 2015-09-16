@@ -45,4 +45,9 @@
  6. Run the Sameple Test(AppiumWearableTest)
  
 [![ScreenShot](https://i.ytimg.com/vi/ULXhQTyLVIA/0.jpg?time=1439788986539)](https://www.youtube.com/watch?v=ULXhQTyLVIA)
-  
+
+
+How to get the UIAutomation Javascript API from Instruments
+
+  1. brew install ios-sim
+  2. ios-sim launch ios.app --devicetypeid com.apple.CoreSimulator.SimDeviceType.iPhone-6  
