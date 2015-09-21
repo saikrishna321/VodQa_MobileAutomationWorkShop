@@ -2,7 +2,6 @@ package com.appium.android.test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
