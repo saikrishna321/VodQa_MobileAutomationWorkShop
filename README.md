@@ -29,7 +29,7 @@
 <h1>Appium Windows Setup For Android </h1>
 ## Prerequisites:
 1. JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
-    * Set environment variable JAVA_HOME under 'System variables': https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20java-home.PNG
+    * Set environment variable JAVA_HOME under 'System variables':  ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20java-home.PNG)
 2. Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
      * Set environment variable ANDROID_HOME under 'System variables': https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20android-home.PNG
 3. Node.js - https://nodejs.org/en/download/. Then run following commands on cmd:
