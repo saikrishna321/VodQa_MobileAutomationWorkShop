@@ -1,4 +1,4 @@
-# Mobile Android Automation
+# Mobile Android Automation using Appium
 
 # Appium Mac OSX Setup For Android
 ## Prerequisites:
@@ -32,11 +32,12 @@
     * npm install wd    # get appium client
     * appium-doctor    # check if everything is correctly set
 4. Appium.exe (zip file) (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
-5. Apache Maven (zip file) - https://maven.apache.org/download.cgi
-  * Set environment variable M2_HOME under 'System variables': ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20maven-home.PNG)
+5. Apache Maven (zip file) - https://maven.apache.org/download.cgi - Set environment variable M2_HOME under 'System variables': 
+![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20maven-home.PNG)
 
 6. Any IDE: Eclipse - https://www.eclipse.org/downloads/
-7. Add all the environment variables set(in steps 1,2 and 5) along with platform-tools and npm(node package manager)path to PATH variable: ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20path%20variable.PNG)
+7. Add all the environment variables set(in steps 1,2 and 5) along with platform-tools and npm(node package manager)path to the PATH variable: 
+![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20path%20variable.PNG)
 
 So, your PATH variable would look something like:
 C:\Windows\System32;%JAVA_HOME%\bin;%ANDROID_HOME%\bin;%M2_HOME%\bin;C:\Users\Administrator\AppData\Local\Android\android-sdk\platform-tools;C:\Program Files\nodejs\node_modules\npm\bin;
