@@ -18,6 +18,7 @@
   * npm install wd    # get appium client
   * appium-doctor     # check if everything is correctly set
 6. Appium.app (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
+7. Any IDE: Eclipse - https://www.eclipse.org/downloads/
 
 # Appium Windows Setup For Android
 ## Prerequisites:
