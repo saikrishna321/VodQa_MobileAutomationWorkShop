@@ -19,7 +19,6 @@ import io.appium.java_client.android.AndroidDriver;
 public class DragAndDrop {
 
 	public static AndroidDriver<WebElement> driver;
-	public static String ContactName = "Sms User";
 
 	@BeforeTest
 	public void setUp() throws MalformedURLException {
@@ -41,11 +40,12 @@ public class DragAndDrop {
 		MobileElement calc = (MobileElement) driver.findElementByName("Calculator");
 		TouchAction touchAction = new TouchAction(driver);
 		touchAction.press(calc).perform();
+		Thread.sleep(5000);
 		touchAction.moveTo(driver.findElementByName("App info")).release().perform();
 		Thread.sleep(5000);
-		
+
 	}
-	
+
 	@AfterTest
 	public void tearDown() {
 		driver.quit();
