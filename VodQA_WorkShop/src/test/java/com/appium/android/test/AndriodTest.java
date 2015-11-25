@@ -1,5 +1,6 @@
 package com.appium.android.test;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -17,6 +18,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import junit.framework.Assert;
 
 public class AndriodTest {
@@ -25,21 +29,28 @@ public class AndriodTest {
 	public static final String PASSWORD = "org.wordpress.android:id/nux_password";
 	public static final String USERNAME = "org.wordpress.android:id/nux_username";
 	AppiumDriver<MobileElement> driver;
-
+	AppiumDriverLocalService appiumDriverLocalService;
 	@Before
 	public void setUp() throws MalformedURLException {
+		 AppiumServiceBuilder builder = new AppiumServiceBuilder().withAppiumJS(new File("/usr/local/lib/node_modules/appium/bin/appium.js"))
+				 .withArgument(GeneralServerFlag.APP,
+				                System.getProperty("user.dir") + "/build/wordpress.apk")
+				               .withArgument(GeneralServerFlag.LOG_LEVEL, "info").usingAnyFreePort(); /*and so on*/;
+				         appiumDriverLocalService = builder.build();
+				         appiumDriverLocalService.start();
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setCapability("deviceName", "9111833b");
 		caps.setCapability("platformVersion", "5.0.2");
 		caps.setCapability("app", System.getProperty("user.dir") + "/build/wordpress.apk");
 		caps.setCapability("package", "org.wordpress.android");
 		caps.setCapability("appActivity", "org.wordpress.android.ui.WPLaunchActivity");
-		driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+		driver = new AndroidDriver<MobileElement>(appiumDriverLocalService.getUrl(), caps);
 	}
 
 	@After
 	public void tearDown() {
 		driver.quit();
+		appiumDriverLocalService.stop();
 	}
 
 	@SuppressWarnings("deprecation")
@@ -51,26 +62,25 @@ public class AndriodTest {
 		driver(By.id(PASSWORD)).sendKeys("Hello12345678");
 		driver(By.name("Sign in")).click();
 		waitForElementClickable(By.id("org.wordpress.android:id/switch_site"), 30);
-		
-		//Swipe Method_1
+
+		// Swipe Method_1
 		Dimension size = driver.manage().window().getSize();
 		int startx = (int) (size.width * 0.9);
 		int endx = (int) (size.width * 0.20);
 		int starty = size.height / 2;
 		driver.swipe(startx, starty, endx, starty, 1000);
-		
-		//Scroll UP
+
+		// Scroll UP
 		waitForElementClickable(By.id(Image_Scrollable), 10);
-		scrollDirection(Image_Scrollable,SwipeElementDirection.UP);
-		 
-		
-		
+		scrollDirection(Image_Scrollable, SwipeElementDirection.UP);
+
 		driver(By.id("org.wordpress.android:id/image_featured")).click();
 		Thread.sleep(5000);
-	   
-	     driver(By.id("org.wordpress.android:id/menu_browse")).click();
-	     Thread.sleep(10000);
-		Assert.assertTrue(driver.getPageSource().contains("VodQASairksiann"));
+
+		driver(By.id("org.wordpress.android:id/menu_browse")).click();
+		Thread.sleep(10000);
+		System.out.println(driver.getPageSource());
+		//Assert.assertTrue(driver.getPageSource().contains("VodQASairksiann"));
 	}
 
 	public WebElement driver(By by) {
@@ -84,7 +94,7 @@ public class AndriodTest {
 
 	}
 
-	public void scrollDirection(String Id,SwipeElementDirection arg) {
+	public void scrollDirection(String Id, SwipeElementDirection arg) {
 		MobileElement e = (MobileElement) driver.findElementById(Id);
 		e.swipe(arg, 1000);
 	}
