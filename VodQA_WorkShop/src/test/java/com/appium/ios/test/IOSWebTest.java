@@ -29,9 +29,9 @@ public class IOSWebTest {
     @Before
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "iPhone 6");
+        capabilities.setCapability("deviceName", "iPhone 6s");
         capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("platformVersion", "8.4");
+        capabilities.setCapability("platformVersion", "9.0");
         capabilities.setCapability("browserName", "safari");
         driver = new IOSDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"),
                 capabilities);

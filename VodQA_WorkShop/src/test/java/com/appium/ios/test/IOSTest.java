@@ -60,7 +60,7 @@ public class IOSTest {
         File app = new File(appDir, "UICatalog.app");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformVersion", "8.4");
-        capabilities.setCapability("deviceName", "iPhone 6");
+        capabilities.setCapability("deviceName", "iPhone 5s");
         capabilities.setCapability("app", app.getAbsolutePath());
         driver = new IOSDriver<IOSElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }

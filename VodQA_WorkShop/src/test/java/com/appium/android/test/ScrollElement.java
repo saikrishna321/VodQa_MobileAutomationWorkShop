@@ -15,7 +15,6 @@ import io.appium.java_client.android.AndroidDriver;
 public class ScrollElement {
 
 	public static AppiumDriver<MobileElement> driver;
-	public static String ContactName = "Sms User";
 
 	@BeforeTest
 	public void setUp() throws MalformedURLException {
@@ -30,7 +29,7 @@ public class ScrollElement {
 
 	@Test(priority = 1)
 	public void scrollElement() throws InterruptedException {
-		scrollToElement("profiles");
+		scrollToElement("Accounts");
 	}
 
 	@Test(priority = 2)

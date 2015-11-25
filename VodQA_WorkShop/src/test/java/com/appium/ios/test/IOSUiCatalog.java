@@ -30,7 +30,7 @@ import io.appium.java_client.ios.IOSElement;
 @SuppressWarnings("deprecation")
 public class IOSUiCatalog {
 
-	private AppiumDriver<IOSElement> driver;
+	private IOSDriver<IOSElement> driver;
 
 	private WebElement row;
 
@@ -41,10 +41,10 @@ public class IOSUiCatalog {
 		File appDir = new File(classpathRoot, "/build/");
 		File app = new File(appDir, "UICatalog.app");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("platformVersion", "8.4");
-		capabilities.setCapability("deviceName", "mynewsimulator");
+		capabilities.setCapability("platformVersion", "9.0");
+		capabilities.setCapability("deviceName", "iPhone 6s");
 		capabilities.setCapability("app", app.getAbsolutePath());
-		capabilities.setCapability("UDID", "0F3826F2-2C2A-47E2-869C-7CE043C12F81");
+		//capabilities.setCapability("udid", "93231996-F5DC-4730-88F0-396F87D40717");
 		driver = new IOSDriver<IOSElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 
@@ -75,11 +75,12 @@ public class IOSUiCatalog {
 
 	@Test
 	public void testFindElement() throws Exception {
+		findElementByIOS(".elements()[1].cells().tabless").click();
 		List<IOSElement> el = driver.findElements(MobileBy.IosUIAutomation(".elements()[1].cells()"));
 		for (int i = 0; i < el.size(); i++) {
 			System.out.println(el.get(i).getAttribute("name"));
 		}
-
+		
 	}
 
 	@Test
