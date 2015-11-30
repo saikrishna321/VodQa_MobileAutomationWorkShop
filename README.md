@@ -49,7 +49,8 @@ C:\Windows\System32;%JAVA_HOME%\bin;%ANDROID_HOME%\bin;%M2_HOME%\bin;C:\Users\Ad
 ## Executing a Basic Script 
 ### Create a Sample Project:
 1. Launch Eclipse. Click on File -> New -> Other -> Maven project.
-2. Select workspace and archetype-quickstart.
+2. Select workspace and then click on Next.
+3. Select 'Catalog -> Internal' and 'maven-archetype-quickstart'.
 3. Provide Group and Artifact ID.
 4. Click 'Finish'.
 5. Add Appium Java Client Dependency: You can add appium java client dependency (which is a java language binding for writing Appium tests) in pom.xml as - ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/java_client_dependency.PNG)
