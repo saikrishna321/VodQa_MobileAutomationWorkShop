@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
@@ -23,13 +25,11 @@ public class WordPress {
 	@Before
 	public void setUp() throws Exception {
 		// set up appium
-		File classpathRoot = new File(System.getProperty("user.dir"));
-		File appDir = new File(classpathRoot, "/build/");
-		File app = new File(appDir, "ios.app");
+
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("platformVersion", "9.0");
-		capabilities.setCapability("deviceName", "iPhone 6s");
-		capabilities.setCapability("app", app.getAbsolutePath());
+		capabilities.setCapability("deviceName", "iPhone 5s");
+		capabilities.setCapability("app", System.getProperty("user.dir") + "/build/WordPress.app");
 		driver = new IOSDriver<IOSElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 
@@ -40,13 +40,13 @@ public class WordPress {
 
 	@Test
 	public void testApp() throws InterruptedException {
-		driver.findElement(MobileBy.IosUIAutomation(".elements().firstWithPredicate(\"value beginsWith 'Username'\")"))
-				.sendKeys("calabash");
-		driver.findElement(By.className("UIASecureTextField")).sendKeys("password");
-		driver.hideKeyboard();
-		driver.findElement(By.xpath(".//*[@name='Add Self-Hosted Site']")).click();
-		driver.findElement(By.xpath(".//*[@value='Site Address (URL)']"))
-				.sendKeys("ec2-54-82-18-238.compute-1.amazonaws.com/wordpress");
-		driver.findElement(By.xpath(".//*[@name='Add Site']")).click();
+		driver.findElementById("Username / Email").sendKeys("vodqa@gmail.com");
+		driver.findElementById("Password").sendKeys("Hello12345678");
+		//driver.hideKeyboard();
+		driver.findElementById("Sign In").click();
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("new-editor-modal-dismiss-button")));
+		driver.findElementById("new-editor-modal-dismiss-button").click();
+		
 	}
 }

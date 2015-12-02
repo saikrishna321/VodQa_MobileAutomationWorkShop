@@ -42,6 +42,7 @@ public class RecipeTouchActionTest {
 		Thread.sleep(5000);
 		driver.findElementById("Chocolate Cake").click();
 		driver.findElementById("Edit").click();
+		
 		MobileElement first_el = driver.findElement(MobileBy.IosUIAutomation(".elements()[1].cells()[1].buttons()[1]"));
 		TouchAction touchAction = new TouchAction(driver);
 		touchAction.longPress(first_el, 10000);
