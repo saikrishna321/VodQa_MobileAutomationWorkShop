@@ -36,7 +36,6 @@ public class RecipesTest {
 
 	@Test
 	public void addRecipe() throws InterruptedException {
-		assertTrue("addRecipe failed: Add Recipe button not found", driver.findElementByClassName("UIAButton").isDisplayed());
 		
 		//click on add recipe (using accessibility id)
 		driver.findElementByAccessibilityId("Add").click();
