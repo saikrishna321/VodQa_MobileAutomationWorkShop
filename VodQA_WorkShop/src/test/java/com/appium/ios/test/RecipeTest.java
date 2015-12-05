@@ -1,4 +1,4 @@
-package com.apple.recipes.appiumtest;
+package com.appium.ios.test;
 
 import java.net.URL;
 
@@ -16,7 +16,7 @@ import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import static org.junit.Assert.assertTrue;
 
-public class RecipesTest {
+public class RecipeTest {
 	private AppiumDriver<IOSElement> driver;
 
 	@Before
