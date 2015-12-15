@@ -22,17 +22,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 
+/*
+ * Code Snippet to Run Appium on Mobile Browsers
+ * Run the Appium server from commandline before running the test.
+ */
+
 public class AndroidWebTest {
 	AppiumDriver<WebElement> driver;
+	WebDriverWait wait;
 
 	@Before
 	public void setUp() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("deviceName", "10.4.21.140:5555");
 		capabilities.setCapability("platformVersion", "5.0.1");
-		capabilities.setCapability("browserName", "chrome");
+		//If you want the tests on real device, make sure chrome browser is installed and change the line to 
+		//capabilities.setCapability("browserName", "chrome");
+		capabilities.setCapability("browserName", "browser");
 		capabilities.setCapability("setJavaScriptEnabled", true);
 		driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		wait = new WebDriverWait(driver, 30);
 	}
 
 	@After
@@ -46,9 +55,8 @@ public class AndroidWebTest {
 		WebElement idElement = driver.findElement(By.id("mobile-menu-title"));
 		assertNotNull(idElement);
 		elementHighlight(idElement);
-		idElement.click();
-		WebDriverWait wait_1 = new WebDriverWait(driver, 30);
-		wait_1.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='mobile-menu']/li[6]/a")));
+		idElement.click();	
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='mobile-menu']/li[6]/a")));
 		WebElement commentElement = driver.findElement(By.xpath(".//*[@id='mobile-menu']/li[6]/a"));
 		elementHighlight(commentElement);
 		assertNotNull(commentElement);
@@ -56,9 +64,7 @@ public class AndroidWebTest {
 		Thread.sleep(5000);
 		WebElement contact_us = driver.findElement(By.xpath(".//*[@id='footer-menu']/div/ul/li[9]/a"));
 		contact_us.click();
-		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='contact-us-vertical']")));
-		Thread.sleep(2000);
 	}
 
 	public void elementHighlight(WebElement element) throws InterruptedException, IOException {

@@ -39,7 +39,7 @@ public class IOSWebTest {
     }
 
     /**
-     * Navigates to http://saucelabs.com/test/guinea-pig and interacts with the browser.
+     * Navigates to http://www.thoughtworks.com and interacts with the browser.
      *
      * @throws Exception
      */

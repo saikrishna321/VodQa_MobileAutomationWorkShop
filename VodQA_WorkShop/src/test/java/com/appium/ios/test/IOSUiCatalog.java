@@ -21,11 +21,10 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 
 /**
- * <a href="https://github.com/appium/appium">Appium</a> test which runs against
- * a local Appium instance deployed with the 'UICatalog' iPhone project which is
- * included in the Appium source distribution.
+ * Code Snippet to control Alert, Sliders and scroll
+ * 
+ * @author saikrisv
  *
- * @author Ross Rowe
  */
 @SuppressWarnings("deprecation")
 public class IOSUiCatalog {
@@ -44,7 +43,6 @@ public class IOSUiCatalog {
 		capabilities.setCapability("platformVersion", "9.0");
 		capabilities.setCapability("deviceName", "iPhone 6s");
 		capabilities.setCapability("app", app.getAbsolutePath());
-		//capabilities.setCapability("udid", "93231996-F5DC-4730-88F0-396F87D40717");
 		driver = new IOSDriver<IOSElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 
@@ -74,16 +72,6 @@ public class IOSUiCatalog {
 	}
 
 	@Test
-	public void testFindElement() throws Exception {
-		findElementByIOS(".elements()[1].cells().tabless").click();
-		List<IOSElement> el = driver.findElements(MobileBy.IosUIAutomation(".elements()[1].cells()"));
-		for (int i = 0; i < el.size(); i++) {
-			System.out.println(el.get(i).getAttribute("name"));
-		}
-		
-	}
-
-	@Test
 	public void actionSheets() throws InterruptedException {
 		findElementByIOS(".elements()[1].cells()[0]").click();
 		Thread.sleep(1800);
@@ -97,6 +85,11 @@ public class IOSUiCatalog {
 		driver.scrollTo("Steppers");
 	}
 
+	/**
+	 * Method holds the slider and drags to particular point
+	 * 
+	 * @throws InterruptedException
+	 */
 	@Test
 	public void testSlider() throws InterruptedException {
 		// go to controls
@@ -110,12 +103,15 @@ public class IOSUiCatalog {
 				2000);
 		assertEquals("12%", slider.getAttribute("value"));
 	}
-  
-	
+
+	/**
+	 * Method to control the Alert Modules
+	 */
 	@Test
-	public void testAlertModal(){
+	public void testAlertModal() {
 		openMenuPosition(2);
 		WebElement el = driver.findElementById("Simple");
 		el.click();
-		assertEquals("A Short Title Is Best", driver.findElementById("A Short Title Is Best").getAttribute("name"));	}
+		assertEquals("A Short Title Is Best", driver.findElementById("A Short Title Is Best").getAttribute("name"));
+	}
 }

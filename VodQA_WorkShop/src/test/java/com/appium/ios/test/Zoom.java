@@ -49,7 +49,7 @@ public class Zoom {
 
 	  @Test
 	  public void TouchActionChainTest() throws InterruptedException {
-	    WebDriverWait wait = new WebDriverWait(driver, 2);
+	    WebDriverWait wait = new WebDriverWait(driver, 20);
 
 	    WebElement button = driver.findElementsByClassName("UIAButton").get(5);
 	    TouchAction action = new TouchAction(driver);
@@ -67,7 +67,7 @@ public class Zoom {
 
 	  @Test
 	  public void MultiGestureTest() throws InterruptedException {
-	    WebDriverWait wait = new WebDriverWait(driver, 2);
+	    WebDriverWait wait = new WebDriverWait(driver, 20);
 
 	    WebElement button = driver.findElementsByClassName("UIAButton").get(5);
 	    TouchAction action = new TouchAction(driver);
@@ -88,7 +88,7 @@ public class Zoom {
 
 	  @Test
 	  public void ZoomTest() throws InterruptedException {
-	    WebDriverWait wait = new WebDriverWait(driver, 2);
+	    WebDriverWait wait = new WebDriverWait(driver, 20);
 
 	    WebElement button = driver.findElementsByClassName("UIAButton").get(5);
 	    TouchAction action = new TouchAction(driver);

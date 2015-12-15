@@ -14,6 +14,10 @@ import org.testng.annotations.Test;
 
 import io.appium.java_client.android.AndroidDriver;
 
+/*
+ * Code Snippet to Switch between two applications, the below code would run on genymotion
+ * not on real device as the appPackage and appActivity would differ.
+ */
 public class AppiumSwitchApp {
 
 	public static AndroidDriver<WebElement> driver;
@@ -30,6 +34,9 @@ public class AppiumSwitchApp {
 		driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
 	}
 
+	/*
+	 * This Method would open the Contact app and add a new contact
+	 */
 	@Test(priority = 1)
 	public void addNewContacts() throws InterruptedException {
 		Thread.sleep(3000);
@@ -41,29 +48,36 @@ public class AppiumSwitchApp {
 		el.get(1).sendKeys("9986923423");
 		driver.findElement(By.id("com.android.contacts:id/save_menu_item")).click();
 	}
-	
+
+	/*
+	 * This method would open SMS app and send text message for the contact
+	 * added above
+	 */
 	@Test(priority = 2)
-	public void sendMessage() throws InterruptedException{
-		driver.startActivity("com.android.mms", ".ui.ComposeMessageActivity",null,null);
+	public void sendMessage() throws InterruptedException {
+		driver.startActivity("com.android.mms", ".ui.ComposeMessageActivity", null, null);
 		driver.findElement(By.id("com.android.mms:id/recipients_editor")).sendKeys("VodQa");
 		Thread.sleep(1500);
 		driver.findElement(By.id("com.android.mms:id/history")).click();
 		driver.findElement(By.id("com.android.mms:id/embedded_text_editor")).sendKeys("Testing Appium VodQa");
 		Thread.sleep(3000);
 	}
-	
-	@Test(priority = 3 )
-	public void deleteContact(){
-		driver.startActivity("com.android.contacts", "com.android.contacts.activities.PeopleActivity",null,null);
+
+	/*
+	 * This Method would switch back to contacts and delete the added contact
+	 */
+
+	@Test(priority = 3)
+	public void deleteContact() {
+		driver.startActivity("com.android.contacts", "com.android.contacts.activities.PeopleActivity", null, null);
 		driver.findElement(By.name("VodQa")).click();
 		driver.findElement(By.id("com.android.contacts:id/menu_edit")).click();
 		driver.findElement(By.xpath(".//*[@content-desc='More options']")).click();
 		driver.findElement(By.name("Delete")).click();
 		driver.findElement(By.id("android:id/button1")).click();
 		List<WebElement> list = driver.findElements(By.name("VodQa"));
-		Assert.assertTrue(list.size() == 0 , "Contact Could not be deleted");
+		Assert.assertTrue(list.size() == 0, "Contact Could not be deleted");
 	}
-	
 
 	@AfterTest
 	public void tearDown() {

@@ -2,7 +2,6 @@ package com.appium.android.test;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.net.URL;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +20,12 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
-import junit.framework.Assert;
+
+/*
+ * Code Snippet to run Appium Server programatically
+ * Scroll/Swipe has been implemented
+ * If running the test from windows please change the appium.js path @ line 39
+ */
 
 public class AndriodTest {
 
@@ -69,18 +73,15 @@ public class AndriodTest {
 		int endx = (int) (size.width * 0.20);
 		int starty = size.height / 2;
 		driver.swipe(startx, starty, endx, starty, 1000);
-
+        
 		// Scroll UP
 		waitForElementClickable(By.id(Image_Scrollable), 10);
 		scrollDirection(Image_Scrollable, SwipeElementDirection.UP);
 
 		driver(By.id("org.wordpress.android:id/image_featured")).click();
-		Thread.sleep(5000);
+		waitForElementClickable(By.id("org.wordpress.android:id/menu_browse"), 10);
 
 		driver(By.id("org.wordpress.android:id/menu_browse")).click();
-		Thread.sleep(10000);
-		System.out.println(driver.getPageSource());
-		//Assert.assertTrue(driver.getPageSource().contains("VodQASairksiann"));
 	}
 
 	public WebElement driver(By by) {

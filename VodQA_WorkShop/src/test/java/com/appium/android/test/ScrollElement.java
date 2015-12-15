@@ -12,6 +12,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
+/*
+ * Code Snippet to scroll to element with UIAutomator commands
+ */
 public class ScrollElement {
 
 	public static AppiumDriver<MobileElement> driver;
