@@ -16,7 +16,7 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 
-public class RecipesTest {
+public class RecipeTest {
 	private AppiumDriver<IOSElement> driver;
 	WebDriverWait wait;
 
