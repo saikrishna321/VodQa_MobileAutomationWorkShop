@@ -65,7 +65,7 @@ public class AndriodTest {
 		waitForElementClickable(By.id(USERNAME), 10);
 		driver(By.id(USERNAME)).sendKeys("vodqa@gmail.com");
 		driver(By.id(PASSWORD)).sendKeys("Hello12345678");
-		driver(By.id("Sign in")).click();
+		driver(By.id("org.wordpress.android:id/nux_sign_in_button")).click();
 		waitForElementClickable(By.id("org.wordpress.android:id/switch_site"), 30);
 
 		// Swipe Method_1
