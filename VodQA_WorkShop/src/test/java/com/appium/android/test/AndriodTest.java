@@ -1,8 +1,14 @@
 package com.appium.android.test;
 
-import java.io.File;
-import java.net.MalformedURLException;
-
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.SwipeElementDirection;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,13 +19,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.SwipeElementDirection;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
-import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import java.io.File;
+import java.net.MalformedURLException;
 
 /*
  * Code Snippet to run Appium Server programatically
@@ -34,20 +35,20 @@ public class AndriodTest {
 	public static final String USERNAME = "org.wordpress.android:id/nux_username";
 	AppiumDriver<MobileElement> driver;
 	AppiumDriverLocalService appiumDriverLocalService;
+
 	@Before
 	public void setUp() throws MalformedURLException {
-		 AppiumServiceBuilder builder = new AppiumServiceBuilder().withAppiumJS(new File("/usr/local/lib/node_modules/appium/bin/appium.js"))
-				 .withArgument(GeneralServerFlag.APP,
-				                System.getProperty("user.dir") + "/build/wordpress.apk")
+		 AppiumServiceBuilder builder = new AppiumServiceBuilder().withAppiumJS(new File("/usr/local/lib/node_modules/appium/build/lib/main.js"))
 				               .withArgument(GeneralServerFlag.LOG_LEVEL, "info").usingAnyFreePort(); /*and so on*/;
 				         appiumDriverLocalService = builder.build();
 				         appiumDriverLocalService.start();
 		DesiredCapabilities caps = new DesiredCapabilities();
-		caps.setCapability("deviceName", "9111833b");
-		caps.setCapability("platformVersion", "5.0.2");
-		caps.setCapability("app", System.getProperty("user.dir") + "/build/wordpress.apk");
-		caps.setCapability("package", "org.wordpress.android");
-		caps.setCapability("appActivity", "org.wordpress.android.ui.WPLaunchActivity");
+		caps.setCapability(MobileCapabilityType.DEVICE_NAME, "9111833b");
+		caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "5.0");
+		caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "org.wordpress.android");
+		caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "org.wordpress.android.ui.WPLaunchActivity");
+		caps.setCapability(MobileCapabilityType.APP,
+				System.getProperty("user.dir") + "/build/wordpress.apk");
 		driver = new AndroidDriver<MobileElement>(appiumDriverLocalService.getUrl(), caps);
 	}
 
@@ -64,7 +65,7 @@ public class AndriodTest {
 		waitForElementClickable(By.id(USERNAME), 10);
 		driver(By.id(USERNAME)).sendKeys("vodqa@gmail.com");
 		driver(By.id(PASSWORD)).sendKeys("Hello12345678");
-		driver(By.name("Sign in")).click();
+		driver(By.id("Sign in")).click();
 		waitForElementClickable(By.id("org.wordpress.android:id/switch_site"), 30);
 
 		// Swipe Method_1

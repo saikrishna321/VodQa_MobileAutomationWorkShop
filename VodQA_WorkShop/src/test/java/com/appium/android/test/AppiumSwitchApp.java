@@ -1,9 +1,6 @@
 package com.appium.android.test;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
-
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -12,7 +9,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import io.appium.java_client.android.AndroidDriver;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 /*
  * Code Snippet to Switch between two applications, the below code would run on genymotion
@@ -40,7 +39,7 @@ public class AppiumSwitchApp {
 	@Test(priority = 1)
 	public void addNewContacts() throws InterruptedException {
 		Thread.sleep(3000);
-		System.out.println(driver.getNetworkConnection());
+		//System.out.println(driver.getNetworkConnection());
 		System.out.println("Application opened");
 		driver.findElement(By.id("com.android.contacts:id/floating_action_button")).click();
 		driver.findElement(By.xpath(".//*[@text='Name']")).sendKeys("VodQa");

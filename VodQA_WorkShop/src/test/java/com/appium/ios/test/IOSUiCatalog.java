@@ -1,11 +1,9 @@
 package com.appium.ios.test;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.File;
-import java.net.URL;
-import java.util.List;
-
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.IOSElement;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,11 +12,10 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.ios.IOSElement;
+import java.io.File;
+import java.net.URL;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Code Snippet to control Alert, Sliders and scroll
@@ -82,7 +79,7 @@ public class IOSUiCatalog {
 
 	@Test
 	public void scrollDown() {
-		driver.scrollTo("Steppers");
+//		driver.scroll;
 	}
 
 	/**
