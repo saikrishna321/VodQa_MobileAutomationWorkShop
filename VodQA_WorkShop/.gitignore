@@ -1,1 +1,4 @@
+test-output/*
+VodQA_WorkShop.iml
 /target/
+.idea/*
