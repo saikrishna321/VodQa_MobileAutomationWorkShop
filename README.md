@@ -18,7 +18,7 @@
   * npm install wd    # get appium client
   * appium-doctor     # check if everything is correctly set
 6. Appium.app (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
-7. Any IDE: Eclipse - https://www.eclipse.org/downloads/
+7. Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
 
 # Appium Windows Setup For Android
 ## Prerequisites:
@@ -36,7 +36,7 @@
 5. Apache Maven (zip file) - https://maven.apache.org/download.cgi - Set environment variable M2_HOME under 'System variables': 
 ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20maven-home.PNG)
 
-6. Any IDE: Eclipse - https://www.eclipse.org/downloads/
+6. Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
 7. Add all the environment variables set(in steps 1,2 and 5) along with platform-tools and npm(node package manager)path to the PATH variable: 
 ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20path%20variable.PNG)
 
