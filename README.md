@@ -13,10 +13,8 @@
 ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set_bash_profile.png)
    * Save the file and Execute "set" in your terminal and restart your terminal for the changes to reflect.
 5. Node.js and Appium:
-  * brew install node    # get node.js
-  * npm install -g appium     # get appium
-  * npm install wd    # get appium client
-  * appium-doctor     # check if everything is correctly set
+  * `brew install node`    # get node.js
+  * `npm install -g appium`     # get appium
 6. Appium.app (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
 7. Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
 
@@ -29,9 +27,7 @@
   * Set environment variable ANDROID_HOME under 'System variables': ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20android-home.PNG)
 
 3. Node.js - https://nodejs.org/en/download/. Then run following commands on cmd:
-    * npm install -g appium    # get appium
-    * npm install wd    # get appium client
-    * appium-doctor    # check if everything is correctly set
+    * `npm install -g appium`    # get appium
 4. Appium.exe (zip file) (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
 5. Apache Maven (zip file) - https://maven.apache.org/download.cgi - Set environment variable M2_HOME under 'System variables': 
 ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20maven-home.PNG)
@@ -128,50 +124,6 @@ xcodebuild -sdk <iphoneos> -target <target_name> -configuration <Debug> CODE_SIG
 
 On success, the app will be built to your ```<app_dir>/build/<configuration>-iphoneos/<app_name>.app```
 
-### Deploy using Fruitstrap
-
-Go clone a forked version of fruitstrap as the [ghughes version](https://github.com/ghughes/fruitstrap)
-is no longer maintained. Success has been confirmed with the [unprompted fork](https://github.com/unprompted/fruitstrap),
-but others are reportedly functional.
-
-Once cloned, run `make fruitstrap`
-Now, copy the resulting `fruitstrap` executable to your app's project or a
-parent directory.
-
-Execute fruitstrap after a clean build by running (commands available depend
-on your fork of fruitstrap):
-
-```center
-./fruitstrap -d -b <PATH_TO_APP> -i <Device_UDID>
-```
-
-If you are aiming to use continuous integration in this setup,
-you may find it useful to want to log the output of fruitstrap to both
-command line and log, like so:
-
-```center
-./fruitstrap -d -b <PATH_TO_APP> -i <Device_UDID> 2>&1 | tee fruit.out
-```
-
-Since fruitstrap will need to be killed before the node server can be
-launched, an option is to scan the output of the fruitstrap launch for some
-telling sign that the app has completed launching. This may prove useful if
-you are doing this via a Rakefile and a ``go_device.sh`` script:
-
-```center
-bundle exec rake ci:fruit_deploy_app | while read line ; do
-   echo "$line" | grep "text to identify successful launch"
-   if [ $? = 0 ]
-   then
-   # Actions
-       echo "App finished launching: $line"
-       sleep 5
-       kill -9 `ps -aef | grep fruitstrap | grep -v grep | awk '{print $2}'`
-   fi
- done
-```
-
-Once fruitstrap is killed, node server can be launched and Appium tests can run!
 
 ## Element Identification for Android
 | elements      | locators      | examples |
