@@ -54,7 +54,7 @@ C:\Windows\System32;%JAVA_HOME%\bin;%ANDROID_HOME%\bin;%M2_HOME%\bin;C:\Users\Ad
 3. Select 'Catalog -> Internal' and 'maven-archetype-quickstart'.
 3. Provide Group and Artifact ID.
 4. Click 'Finish'.
-5. Add Appium Java Client Dependency: You can add appium java client dependency (which is a java language binding for writing Appium tests) in pom.xml as - ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/java_client_dependency.PNG)
+5. Add Appium Java Client Dependency: You can add appium java client dependency (which is a java language binding for writing Appium tests) in pom.xml as - ![screenshots](https://raw.githubusercontent.com/saikrishna321/VodQa_MobileAutomationWorkShop/master/screenshots/java_client_dependency.PNG)
 
 ### Desired Capabilities: 
 1.  DEVICE_NAME: The kind of mobile device or emulator to use (Android Emulator, iPhone Simulator, Nexus 5 etc.)
