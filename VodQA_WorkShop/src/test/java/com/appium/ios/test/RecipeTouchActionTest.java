@@ -2,6 +2,7 @@ package com.appium.ios.test;
 
 import java.io.File;
 import java.net.URL;
+import java.time.Duration;
 
 import org.junit.After;
 import org.junit.Before;
@@ -52,7 +53,7 @@ public class RecipeTouchActionTest {
 		driver.findElementById("Edit").click();	
 		MobileElement first_el = driver.findElement(MobileBy.IosUIAutomation(".elements()[1].cells()[1].buttons()[1]"));
 		TouchAction touchAction = new TouchAction(driver);
-		touchAction.longPress(first_el, 20000);
+		touchAction.longPress(first_el, Duration.ofSeconds(2));
 		touchAction.moveTo(driver.findElement(MobileBy.IosUIAutomation(".elements()[1].cells()[4].buttons()[1]")))
 				.release().perform();
 		Thread.sleep(5000);

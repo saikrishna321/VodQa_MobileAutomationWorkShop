@@ -100,13 +100,13 @@ public class Zoom {
 
 	    WebElement mapview = driver.findElementByXPath("//UIAWindow[1]/UIAMapView[1]");
 
-	    driver.zoom(mapview);
+	    //driver.zoom(mapview);
 	    Thread.sleep(2000);
 	  }
 
 	  @Test
 	  public void TapSingleFingerTest() {
-	    driver.tap(1,100,200,1000);
+	    //driver.tap(1,100,200,1000);
 	  }
 
 	  

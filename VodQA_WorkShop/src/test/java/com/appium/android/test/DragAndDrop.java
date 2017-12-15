@@ -3,6 +3,7 @@ package com.appium.android.test;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.By.ByName;
 import org.openqa.selenium.WebDriver;
@@ -31,11 +32,10 @@ public class DragAndDrop {
 	@BeforeTest
 	public void setUp() throws MalformedURLException {
 		DesiredCapabilities caps = new DesiredCapabilities();
-		caps.setCapability("deviceName", "emulator-5554");
+		caps.setCapability("deviceName", "android");
 		caps.setCapability("appPackage", "com.android.launcher3");
 		caps.setCapability("appActivity", ".Launcher");
 		caps.setCapability("commandTimeout", "50");
-		caps.setCapability("platformVersion", "5.0.2");
 		driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
 		wait = new WebDriverWait(driver, 30);
 	}
@@ -48,7 +48,7 @@ public class DragAndDrop {
 		wait.until(ExpectedConditions.elementToBeClickable(By.name("Calculator")));
 		MobileElement calc = (MobileElement) driver.findElementByName("Calculator");
 		TouchAction touchAction = new TouchAction(driver);
-		touchAction.press(calc).perform();
+		touchAction.press(PointOption.point(calc.getCenter().x,calc.getCenter().y)).perform().release();
 		Thread.sleep(5000);
 		touchAction.moveTo(driver.findElementByName("App info")).release().perform();
 

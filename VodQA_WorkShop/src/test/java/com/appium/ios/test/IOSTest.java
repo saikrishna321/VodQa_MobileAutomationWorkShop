@@ -11,14 +11,6 @@ import java.net.URL;
 import java.util.List;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -173,7 +165,7 @@ public class IOSTest {
         row = driver.findElementsByClassName("UIATableCell").get(2);
         Point location1 = row.getLocation();
         Point center = getCenter(row);
-        driver.swipe(center.getX(), center.getY(), center.getX(), center.getY()-20, 1);
+       // driver.swipe(center.getX(), center.getY(), center.getX(), center.getY()-20, 1);
         Point location2 = row.getLocation();
         assertEquals(location1.getX(), location2.getX());
         assertNotSame(location1.getY(), location2.getY());
@@ -187,22 +179,10 @@ public class IOSTest {
       WebElement slider = driver.findElementByClassName("UIASlider");
       assertEquals("50%", slider.getAttribute("value"));
       Point sliderLocation = getCenter(slider);
-      driver.swipe(sliderLocation.getX(), sliderLocation.getY(), sliderLocation.getX()-100, sliderLocation.getY(), 1);
+      //driver.swipe(sliderLocation.getX(), sliderLocation.getY(), sliderLocation.getX()-100, sliderLocation.getY(), 1);
       assertEquals("0%", slider.getAttribute("value"));
     }
 
-    @Test
-    public void testSessions() throws Exception {
-      HttpGet request = new HttpGet("http://localhost:4723/wd/hub/sessions");
-      @SuppressWarnings("resource")
-	  HttpClient httpClient = new DefaultHttpClient();
-      HttpResponse response = httpClient.execute(request);
-      HttpEntity entity = response.getEntity();
-      JSONObject jsonObject = (JSONObject) new JSONParser().parse(EntityUtils.toString(entity));
-
-      String sessionId = driver.getSessionId().toString();
-      assertEquals(jsonObject.get("sessionId"), sessionId);
-    }
 
     @Test
     public void testSize() {

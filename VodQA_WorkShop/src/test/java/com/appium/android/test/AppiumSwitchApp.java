@@ -1,5 +1,6 @@
 package com.appium.android.test;
 
+import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -54,7 +55,8 @@ public class AppiumSwitchApp {
 	 */
 	@Test(priority = 2)
 	public void sendMessage() throws InterruptedException {
-		driver.startActivity("com.android.mms", ".ui.ComposeMessageActivity", null, null);
+		Activity activity = new Activity("com.android.mms",".ui.ComposeMessageActivity");
+		driver.startActivity(activity);
 		driver.findElement(By.id("com.android.mms:id/recipients_editor")).sendKeys("VodQa");
 		Thread.sleep(1500);
 		driver.findElement(By.id("com.android.mms:id/history")).click();
@@ -68,7 +70,8 @@ public class AppiumSwitchApp {
 
 	@Test(priority = 3)
 	public void deleteContact() {
-		driver.startActivity("com.android.contacts", "com.android.contacts.activities.PeopleActivity", null, null);
+		Activity activity = new Activity("com.android.contacts","com.android.contacts.activities.PeopleActivity");
+		driver.startActivity(activity);
 		driver.findElement(By.name("VodQa")).click();
 		driver.findElement(By.id("com.android.contacts:id/menu_edit")).click();
 		driver.findElement(By.xpath(".//*[@content-desc='More options']")).click();

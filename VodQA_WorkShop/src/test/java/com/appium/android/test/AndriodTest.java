@@ -2,13 +2,14 @@ package com.appium.android.test;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.SwipeElementDirection;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import io.appium.java_client.touch.offset.PointOption;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +22,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.time.Duration;
 
 /*
  * Code Snippet to run Appium Server programatically
@@ -33,7 +35,7 @@ public class AndriodTest {
 	private static final String Image_Scrollable = "org.wordpress.android:id/image_featured";
 	public static final String PASSWORD = "org.wordpress.android:id/nux_password";
 	public static final String USERNAME = "org.wordpress.android:id/nux_username";
-	AppiumDriver<MobileElement> driver;
+	AppiumDriver driver;
 	AppiumDriverLocalService appiumDriverLocalService;
 
 	@Before
@@ -43,8 +45,7 @@ public class AndriodTest {
 				         appiumDriverLocalService = builder.build();
 				         appiumDriverLocalService.start();
 		DesiredCapabilities caps = new DesiredCapabilities();
-		caps.setCapability(MobileCapabilityType.DEVICE_NAME, "9111833b");
-		caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "5.0");
+		caps.setCapability(MobileCapabilityType.DEVICE_NAME, "android");
 		caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "org.wordpress.android");
 		caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "org.wordpress.android.ui.WPLaunchActivity");
 		caps.setCapability(MobileCapabilityType.APP,
@@ -73,11 +74,10 @@ public class AndriodTest {
 		int startx = (int) (size.width * 0.9);
 		int endx = (int) (size.width * 0.20);
 		int starty = size.height / 2;
-		driver.swipe(startx, starty, endx, starty, 1000);
-        
-		// Scroll UP
+		new TouchAction(driver).press(PointOption.point(startx,starty))
+				.waitAction(Duration.ofSeconds(3))
+				.moveTo(PointOption.point(endx,starty)).release().perform();
 		waitForElementClickable(By.id(Image_Scrollable), 10);
-		scrollDirection(Image_Scrollable, SwipeElementDirection.UP);
 
 		driver(By.id("org.wordpress.android:id/image_featured")).click();
 		waitForElementClickable(By.id("org.wordpress.android:id/menu_browse"), 10);
@@ -94,11 +94,6 @@ public class AndriodTest {
 		WebDriverWait wait = new WebDriverWait(driver, waitTime);
 		wait.until(ExpectedConditions.elementToBeClickable(by));
 
-	}
-
-	public void scrollDirection(String Id, SwipeElementDirection arg) {
-		MobileElement e = (MobileElement) driver.findElementById(Id);
-		e.swipe(arg, 1000);
 	}
 
 }
