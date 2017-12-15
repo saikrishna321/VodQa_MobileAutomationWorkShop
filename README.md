@@ -5,18 +5,23 @@
 1. Brew:
   * ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 2. JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
-3. Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
-4. Set ANDROID_HOME and JAVA_HOME
+3. Install Maven and set M2_Home (https://www.mkyong.com/maven/install-maven-on-mac-osx/)
+4. Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
+5. Set ANDROID_HOME and JAVA_HOME
    * Open Terminal and Navigate to Home Directory.
    * Execute command touch .bash_profile
    * Execute command open -e .bash_profile and set the path a shown in image below( Change the path to the android sdk downloaded)
 ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set_bash_profile.png)
    * Save the file and Execute "set" in your terminal and restart your terminal for the changes to reflect.
+
 5. Node.js and Appium:
   * `brew install node`    # get node.js
   * `npm install -g appium`     # get appium
+  * `npm instal -g appium-doctor` # check if all software's are installed.
 6. Appium.app (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
 7. Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
+7. Appium.app (for Appium Inspector) - https://github.com/appium/appium-desktop/releases
+8. Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
 
 # Appium Windows Setup For Android
 ## Prerequisites:

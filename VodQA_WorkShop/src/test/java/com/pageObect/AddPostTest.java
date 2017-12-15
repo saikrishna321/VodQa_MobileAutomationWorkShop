@@ -27,7 +27,7 @@ public class AddPostTest {
     @BeforeClass public void setUp() throws MalformedURLException {
         caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, "android");
-        caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "5.0");
+        //caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "5.0");
         caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "org.wordpress.android");
         caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,
             "org.wordpress.android.ui.WPLaunchActivity");

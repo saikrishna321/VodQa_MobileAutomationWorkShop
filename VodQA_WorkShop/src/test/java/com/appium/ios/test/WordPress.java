@@ -1,8 +1,9 @@
 package com.appium.ios.test;
 
-import java.io.File;
-import java.net.URL;
-
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.IOSElement;
+import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,10 +13,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.ios.IOSElement;
+import java.net.URL;
 
 public class WordPress {
 	private AppiumDriver<IOSElement> driver;
@@ -27,9 +25,10 @@ public class WordPress {
 		// set up appium
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("platformVersion", "9.0");
-		capabilities.setCapability("deviceName", "iPhone 5s");
-		capabilities.setCapability("app", System.getProperty("user.dir") + "/build/WordPress.app");
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.2");
+		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 6");
+		capabilities.setCapability(MobileCapabilityType.APP,
+			System.getProperty("user.dir") + "/build/WordPress.app");
 		driver = new IOSDriver<IOSElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 
