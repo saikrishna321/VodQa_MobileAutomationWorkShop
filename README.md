@@ -18,10 +18,8 @@
   * `brew install node`    # get node.js
   * `npm install -g appium`     # get appium
   * `npm instal -g appium-doctor` # check if all software's are installed.
-6. Appium.app (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
+6. Appium.app (for Appium Inspector) - https://github.com/appium/appium-desktop/releases
 7. Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
-7. Appium.app (for Appium Inspector) - https://github.com/appium/appium-desktop/releases
-8. Any IDE: IntelliJ IDEA - https://www.jetbrains.com/idea/download/
 
 # Appium Windows Setup For Android
 ## Prerequisites:
@@ -33,7 +31,7 @@
 
 3. Node.js - https://nodejs.org/en/download/. Then run following commands on cmd:
     * `npm install -g appium`    # get appium
-4. Appium.exe (zip file) (for Appium Inspector) - https://bitbucket.org/appium/appium.app/downloads/
+4. Appium.exe (zip file) (for Appium Inspector) - https://github.com/appium/appium-desktop/releases
 5. Apache Maven (zip file) - https://maven.apache.org/download.cgi - Set environment variable M2_HOME under 'System variables': 
 ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20maven-home.PNG)
 
