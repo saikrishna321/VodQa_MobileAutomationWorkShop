@@ -4,9 +4,10 @@
 ## Prerequisites:
 1. Brew:
   * ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-2. JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
+2. Download and Install JAVA JDK 8 from http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+  * Set environment variable JAVA_HOME under 'System variables':  ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20java-home.PNG)
 3. Install Maven and set M2_Home (https://www.mkyong.com/maven/install-maven-on-mac-osx/)
-4. Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
+4. Download and Install Android Studio for Windows from https://developer.android.com/studio/index.html
 5. Set ANDROID_HOME and JAVA_HOME
    * Open Terminal and Navigate to Home Directory.
    * Execute command touch .bash_profile
@@ -23,10 +24,10 @@
 
 # Appium Windows Setup For Android
 ## Prerequisites:
-1. JAVA JDK - http://www.oracle.com/technetwork/java/javase/downloads/index.html
+1. Download and Install JAVA JDK 8 from http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
   * Set environment variable JAVA_HOME under 'System variables':  ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20java-home.PNG)
 
-2. Android SDK - https://developer.android.com/sdk/index.html [Note: Appium supports Android API >=17]
+2. Download and Install Android Studio for Windows from https://developer.android.com/studio/index.html
   * Set environment variable ANDROID_HOME under 'System variables': ![screenshots](https://raw.githubusercontent.com/SmritiTuteja/VodQa_MobileAutomationWorkShop/master/screenshots/set%20android-home.PNG)
 
 3. Node.js - https://nodejs.org/en/download/. Then run following commands on cmd:
