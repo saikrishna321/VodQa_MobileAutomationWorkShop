@@ -1,21 +1,25 @@
-package pageObject.tests;
+package pageobject.tests;
 
 import org.springframework.util.Assert;
 import org.testng.annotations.Test;
-import pageObject.pages.LoginPage;
-import pageObject.utils.BaseTest;
+import pageobject.pages.LoginPage;
+import pageobject.pages.WelcomePage;
 
 /**
  * Created by saikrisv on 24/08/16.
  */
-public class AddPostTest extends BaseTest {
+public class AddPostTest{
 
-    LoginPage loginPage;
+    private LoginPage loginPage;
+    private WelcomePage welcomePage;
 
-    @Test public void addPost() {
-        loginPage = new LoginPage(driver);
-        String postText = loginPage.enterUserCredentials().waitForWelcomePage().clickOnPostButton().addTitle()
-            .addPost().publishPost().clickOnBlogPosts().getPostText();
+    @Test
+    public void addPost() {
+        loginPage = new LoginPage();
+        welcomePage = loginPage.enterUserCredentials();
+        welcomePage.waitForWelcomePage();
+        String postText = welcomePage.clickOnPostButton().addTitle()
+                .addPost().publishPost().clickOnBlogPosts().getPostText();
         Assert.isTrue(postText.equals("VodQAPune"));
     }
 }

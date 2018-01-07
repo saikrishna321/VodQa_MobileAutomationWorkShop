@@ -1,20 +1,19 @@
-package pageObject.pages;
+package pageobject.pages;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
-import pageObject.Objects.PostPageObjects;
+import pageobject.objects.PostPageObjects;
 
 /**
  * Created by saikrisv on 25/08/16.
  */
-public class PostPage {
-    AppiumDriver driver;
-    PostPageObjects postPageObjects;
-    public PostPage(AppiumDriver driver) {
-        this.driver = driver;
+public class PostPage  extends BasePage{
+
+    private PostPageObjects postPageObjects;
+
+    public PostPage() {
         postPageObjects = new PostPageObjects();
-        PageFactory.initElements(new AppiumFieldDecorator(driver),postPageObjects);
+        PageFactory.initElements(new AppiumFieldDecorator(appiumDriver),postPageObjects);
     }
 
 
@@ -25,12 +24,12 @@ public class PostPage {
 
     public PostPage addPost(){
         postPageObjects.postContent.sendKeys("VodQA Rocks!!");
-        driver.navigate().back();
+        appiumDriver.navigate().back();
         return this;
     }
 
     public WelcomePage publishPost(){
         postPageObjects.publish.click();
-        return new WelcomePage(driver);
+        return new WelcomePage();
     }
 }

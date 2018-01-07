@@ -1,28 +1,24 @@
-package pageObject.pages;
+package pageobject.pages;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
-import pageObject.utils.BaseTest;
 
 /**
  * Created by saikrisv on 25/08/16.
  */
-public class BlogPostPage extends BaseTest{
+public class BlogPostPage extends BasePage {
 
-    AppiumDriver driver;
+    @AndroidFindBy(xpath = ".//*[@text='VodQAPune']")
+    public MobileElement verifyPost;
 
-    @AndroidFindBy(xpath=".//*[@text='VodQAPune']") public MobileElement verifyPost;
-    public BlogPostPage(AppiumDriver driver) {
-        this.driver = driver;
-
-        PageFactory.initElements(new AppiumFieldDecorator(driver),this);
+    public BlogPostPage() {
+        PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);
     }
 
-    public String getPostText(){
-        waitForElement(driver,verifyPost);
+    public String getPostText() {
+        waitForElement(verifyPost);
         return verifyPost.getText();
     }
 
