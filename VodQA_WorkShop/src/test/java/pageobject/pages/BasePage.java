@@ -22,11 +22,22 @@ public abstract class BasePage {
     protected DesiredCapabilities desiredCapabilities;
     protected WebDriverWait webDriverWait;
 
-    @BeforeClass
-    public void setUp() throws MalformedURLException {
+    public BasePage() {
+        try {
+            if (null == appiumDriver) {
+                initializeDriver();
+            }
+        } catch (MalformedURLException mal) {
+            System.out.println(mal.getMessage());
+            appiumDriver = null;
+            desiredCapabilities = null;
+        }
+    }
+
+    private void initializeDriver() throws MalformedURLException {
         desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "android");
-        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "5.0");
+        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.0.0");
         desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "org.wordpress.android");
         desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,
                 "org.wordpress.android.ui.WPLaunchActivity");
@@ -35,9 +46,8 @@ public abstract class BasePage {
         appiumDriver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
     }
 
-    @AfterClass
-    public void tearDown() {
-        appiumDriver.quit();
+    public void cleanUp() {
+        if (null != appiumDriver) appiumDriver.quit();
     }
 
     public void waitForElement(MobileElement id) {

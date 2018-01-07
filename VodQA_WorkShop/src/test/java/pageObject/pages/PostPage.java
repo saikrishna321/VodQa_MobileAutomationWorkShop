@@ -7,15 +7,15 @@ import pageobject.objects.PostPageObjects;
 /**
  * Created by saikrisv on 25/08/16.
  */
-public class PostPage  extends BasePage{
+public class PostPage  extends BasePage implements IPageFactory{
 
     private PostPageObjects postPageObjects;
 
-    public PostPage() {
+    @Override
+    public void initElements() {
         postPageObjects = new PostPageObjects();
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver),postPageObjects);
     }
-
 
     public PostPage addTitle(){
         postPageObjects.postTitle.sendKeys("VodQAPune");

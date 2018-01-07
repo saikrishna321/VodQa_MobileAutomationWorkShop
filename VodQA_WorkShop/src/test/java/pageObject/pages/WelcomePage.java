@@ -7,18 +7,18 @@ import pageobject.objects.WelcomePageObjects;
 /**
  * Created by saikrisv on 25/08/16.
  */
-public class WelcomePage extends BasePage{
+public class WelcomePage extends BasePage implements  IPageFactory{
 
     private WelcomePageObjects welcomePageObjects;
 
-    public WelcomePage() {
+    @Override
+    public void initElements() {
         welcomePageObjects = new WelcomePageObjects();
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), welcomePageObjects);
     }
 
-    public WelcomePage waitForWelcomePage(){
+    public void waitForWelcomePage(){
         waitForElement(welcomePageObjects.welcomeHeader);
-        return this;
     }
 
 
