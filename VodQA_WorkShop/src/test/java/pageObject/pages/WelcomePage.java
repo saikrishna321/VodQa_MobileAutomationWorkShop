@@ -1,40 +1,35 @@
-package pageObject.pages;
+package pageobject.pages;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
-import pageObject.Objects.WelcomePageObjects;
-import pageObject.utils.BaseTest;
+import pageobject.objects.WelcomePageObjects;
 
 /**
  * Created by saikrisv on 25/08/16.
  */
-public class WelcomePage {
+public class WelcomePage extends BasePage implements  IPageFactory{
 
-    AppiumDriver driver;
-    BaseTest baseTest;
-    WelcomePageObjects welcomePageObjects;
+    private WelcomePageObjects welcomePageObjects;
 
-    public WelcomePage(AppiumDriver driver) {
-        this.driver = driver;
-        baseTest = new BaseTest();
+    @Override
+    public void initElements() {
         welcomePageObjects = new WelcomePageObjects();
-        PageFactory.initElements(new AppiumFieldDecorator(driver),welcomePageObjects);
+        PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), welcomePageObjects);
     }
 
-    public WelcomePage waitForWelcomePage(){
-      baseTest.waitForElement(driver,welcomePageObjects.welcomeHeader);
-        return this;
+    public void waitForWelcomePage(){
+        waitForElement(welcomePageObjects.welcomeHeader);
     }
 
-    public PostPage clickOnPostButton(){
+
+    public PostPage clickOnPostButton() {
         welcomePageObjects.clickAddPostButton.click();
-        return new PostPage(driver);
+        return new PostPage();
     }
 
-    public BlogPostPage clickOnBlogPosts(){
+    public BlogPostPage clickOnBlogPosts() {
         welcomePageObjects.clickBlogPost.click();
-        return new BlogPostPage(driver);
+        return new BlogPostPage();
     }
 
 }
