@@ -1,25 +1,27 @@
-package pageobject.pages;
+package pageObject.pages;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
-import pageobject.objects.LoginPageObjects;
+import pageObject.Objects.LoginPageObjects;
 
 /**
  * Created by saikrisv on 24/08/16.
  */
-public class LoginPage extends BasePage implements IPageFactory{
+public class LoginPage {
 
-    private LoginPageObjects loginPageObjects;
-
-    @Override
-    public void initElements() {
+    AppiumDriver driver;
+    LoginPageObjects  loginPageObjects;
+    public LoginPage(AppiumDriver driver) {
+        this.driver = driver;
         loginPageObjects = new LoginPageObjects();
-        PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), loginPageObjects);
+        PageFactory.initElements(new AppiumFieldDecorator(driver),loginPageObjects);
     }
 
-    public void enterUserCredentials() {
+    public WelcomePage enterUserCredentials(){
         loginPageObjects.userName.sendKeys("vodqa@gmail.com");
-        loginPageObjects.password.sendKeys("Hello12345678");
-        loginPageObjects.signInButton.click();
+        loginPageObjects.passWord.sendKeys("Hello12345678");
+        loginPageObjects.signIn.click();
+        return new WelcomePage(driver);
     }
 }
